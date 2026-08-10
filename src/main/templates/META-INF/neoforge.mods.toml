@@ -46,7 +46,7 @@ displayName="${mod_name}" #mandatory
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Example mod description.
+此模組增加了「殭屍王」變種殭屍，有特殊能力，偵測到玩家後，將召喚出強化殭屍士兵。
 '''
 
 # The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.
