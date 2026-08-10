@@ -84,18 +84,14 @@ public class ZombieKingSummonGoal extends Goal {
 
     private void summonBomber(ServerLevel level) {
         CrazyBomberEntity bomber = ModEntityTypes.CRAZY_BOMBER.get().create(level);
-        if (bomber == null) {
-            return;
-        }
+        if (bomber == null) return;
 
         Vec3 pos = randomPositionAround(king.position(), 1.5, 3.0);
         bomber.moveTo(pos.x, pos.y, pos.z, king.getYRot(), 0.0F);
         bomber.finalizeSpawn(level, level.getCurrentDifficultyAt(bomber.blockPosition()), MobSpawnType.MOB_SUMMONED, null);
 
         LivingEntity target = king.getTarget();
-        if (target != null) {
-            bomber.setTarget(target);
-        }
+        if (target != null) bomber.setTarget(target);
 
         level.addFreshEntity(bomber);
         king.incrementSummonedBombers();

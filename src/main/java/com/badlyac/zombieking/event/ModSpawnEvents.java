@@ -21,7 +21,9 @@ public final class ModSpawnEvents {
 
     @SubscribeEvent
     public static void onZombieFinalizeSpawn(FinalizeSpawnEvent event) {
-        if (event.getSpawnType() != MobSpawnType.NATURAL) {
+        MobSpawnType spawnType = event.getSpawnType();
+        if (spawnType != MobSpawnType.NATURAL && spawnType != MobSpawnType.SPAWN_EGG) {
+            // 自然生成、生怪蛋生成都有機會替換成殭屍王；其餘來源（召喚、刷怪磚等）維持一般殭屍
             return;
         }
         if (event.getEntity().getType() != EntityType.ZOMBIE) {
@@ -48,7 +50,7 @@ public final class ModSpawnEvents {
         }
 
         king.moveTo(event.getX(), event.getY(), event.getZ(), event.getEntity().getYRot(), 0.0F);
-        king.finalizeSpawn(serverLevel, event.getDifficulty(), MobSpawnType.NATURAL, null);
+        king.finalizeSpawn(serverLevel, event.getDifficulty(), spawnType, null);
         serverLevel.addFreshEntity(king);
     }
 
