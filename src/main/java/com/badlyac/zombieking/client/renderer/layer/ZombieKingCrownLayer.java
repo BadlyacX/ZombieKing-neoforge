@@ -14,18 +14,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * 純視覺效果的渲染層：用一圈漂浮的金磚組成王冠的形狀，戴在殭屍王頭上。
- * <p>
- * 這裡刻意不把任何物品放進頭部裝備欄（{@code EquipmentSlot.HEAD}），
- * 因此殭屍王的護甲值、掉落物等設定完全不受影響，與普通殭屍相同——只有外觀多了王冠。
- */
 public class ZombieKingCrownLayer<T extends ZombieKingEntity, M extends EntityModel<T> & HeadedModel> extends RenderLayer<T, M> {
 
-    /** 組成王冠的物品。 */
     private static final ItemStack CROWN_BLOCK = new ItemStack(Items.GOLD_BLOCK);
 
-    /** 圍成王冠底環的金磚數量。 */
     private static final int RING_POINTS = 16;
     private static final float RING_RADIUS = 0.5F;
     private static final float RING_SCALE = 0.23F;
